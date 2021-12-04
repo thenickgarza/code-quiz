@@ -44,6 +44,7 @@ function startGame (){
     startButton.style.display = "none";
     // questionElement.style.display = "none";
     generateQuizQuestions ()
+    checkAnswer ()
     
     
     // timer
