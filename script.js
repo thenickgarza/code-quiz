@@ -4,13 +4,13 @@ var questionElement = document.querySelector(".questions");
 var buttonGrid = document.querySelector(".btn-grid");
 var quizTimer = document.querySelector(".timer");
 var buttonA = document.querySelector(".btn-a");
-buttonA.onclick = checkAnswer
+
 var buttonB = document.querySelector(".btn-b");
-buttonB.onlclick = checkAnswer
+
 var buttonC = document.querySelector(".btn-c");
-buttonC.onclick = checkAnswer
+
 var buttonD = document.querySelector(".btn-d");
-buttonD.onclick = checkAnswer
+
 startButton.addEventListener("click", console.log);
 
 // Quiz questions object
@@ -41,9 +41,13 @@ function generateQuizQuestions(){
     var currentQuestion = quizQuestions[currentQuestionIndex];
     questionElement.innerHTML = currentQuestion.question;
     buttonA.innerHTML = currentQuestion.choiceA;
+    buttonA.onclick = checkAnswer
     buttonB.innerHTML = currentQuestion.choiceB;
+    buttonB.onclick = checkAnswer
     buttonC.innerHTML = currentQuestion.choiceC;
+    buttonC.onclick = checkAnswer
     buttonD.innerHTML = currentQuestion.choiceD;
+    buttonD.onclick = checkAnswer
 }
 function checkAnswer(answer){
     correct = quizQuestions[currentQuestionIndex].correctAnswer;
