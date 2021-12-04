@@ -4,9 +4,14 @@ var questionElement = document.querySelector(".questions");
 var buttonGrid = document.querySelector(".btn-grid");
 var quizTimer = document.querySelector(".timer");
 var buttonA = document.querySelector(".btn-a");
+buttonA.onclick = checkAnswer
 var buttonB = document.querySelector(".btn-b");
+buttonB.onlclick = checkAnswer
 var buttonC = document.querySelector(".btn-c");
+buttonC.onclick = checkAnswer
 var buttonD = document.querySelector(".btn-d");
+buttonD.onclick = checkAnswer
+startButton.addEventListener("click", console.log);
 
 // Quiz questions object
 var quizQuestions = [{
@@ -31,6 +36,7 @@ var timerInterval;
 var timeLeft = 60;
 
 
+
 function generateQuizQuestions(){
     var currentQuestion = quizQuestions[currentQuestionIndex];
     questionElement.innerHTML = currentQuestion.question;
@@ -38,26 +44,6 @@ function generateQuizQuestions(){
     buttonB.innerHTML = currentQuestion.choiceB;
     buttonC.innerHTML = currentQuestion.choiceC;
     buttonD.innerHTML = currentQuestion.choiceD;
-}
-    // function to start the quiz
-function startGame (){
-    startButton.style.display = "none";
-    // questionElement.style.display = "none";
-    generateQuizQuestions ()
-    checkAnswer ()
-    
-    
-    // timer
-    // timerInterval = setInterval(function() {
-    //     timeLeft--;
-    //     quizTimer.innerText = "Time left: " + timeLeft;
-    
-    //     if(timeLeft === 0) {
-    //       clearInterval(timerInterval);
-    //       showScore();
-    //     }
-    //   }, 1000);
-
 }
 function checkAnswer(answer){
     correct = quizQuestions[currentQuestionIndex].correctAnswer;
@@ -71,11 +57,29 @@ function checkAnswer(answer){
     }else if (answer !== correct && currentQuestionIndex !== finalQuestionIndex){
         alert("That Is Incorrect.")
         currentQuestionIndex++;
-        generateQuizQuestions();
+        
         //display in the results div that the answer is wrong.
     }else{
         showScore();
     }
+
 }
-// checkAnswer()
+    // function to start the quiz
+function startGame (){
+    startButton.style.display = "none";
+    // questionElement.style.display = "none";
+    generateQuizQuestions ()
+    // timer
+    // timerInterval = setInterval(function() {
+    //     timeLeft--;
+    //     quizTimer.innerText = "Time left: " + timeLeft;
+    
+    //     if(timeLeft === 0) {
+    //       clearInterval(timerInterval);
+    //       showScore();
+    //     }
+    //   }, 1000);
+
+}
+
 startButton.addEventListener("click", startGame);
