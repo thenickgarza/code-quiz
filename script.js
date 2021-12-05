@@ -2,16 +2,12 @@
 var startButton = document.querySelector(".start-btn");
 var questionElement = document.querySelector(".questions");
 var buttonGrid = document.querySelector(".btn-grid");
-var quizTimer = document.querySelector(".timer");
+var quizTimer = document.querySelector("#timer");
 var buttonA = document.querySelector(".btn-a");
-
 var buttonB = document.querySelector(".btn-b");
-
 var buttonC = document.querySelector(".btn-c");
-
 var buttonD = document.querySelector(".btn-d");
 
-startButton.addEventListener("click", console.log);
 
 // Quiz questions object
 var quizQuestions = [{
@@ -27,7 +23,17 @@ var quizQuestions = [{
         choiceB: "behavior",
         choiceC: "all the above",
         choiceD: "style",
-        correctAnswer: "behavior"},   
+        correctAnswer: "behavior"},
+    {   
+        question: "The is a placeholdet question",
+        choiceA: "A",
+        choiceB: "B",
+        choiceC: "C",
+        choiceD: "D",
+        correctAnswer: "A"},
+
+
+      
     ];
 
 var finalQuestionIndex = quizQuestions.length
@@ -35,6 +41,7 @@ var currentQuestionIndex = 0
 var timerInterval;
 var timeLeft = 60;
 var score = 0
+var correct;
 
 
 function generateQuizQuestions(){
@@ -73,11 +80,10 @@ function startGame (){
     startButton.style.display = "none";
     // questionElement.style.display = "none";
     generateQuizQuestions ()
-    checkAnswer ()
     // timer
     timerInterval = setInterval(function() {
         timeLeft--;
-        quizTimer.document.innerText = "Time left:" + timeLeft;
+        quizTimer.innerText = "Time left:" + timeLeft;
     
         if(timeLeft === 0) {
           clearInterval(timerInterval);
