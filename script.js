@@ -34,7 +34,7 @@ var finalQuestionIndex = quizQuestions.length
 var currentQuestionIndex = 0
 var timerInterval;
 var timeLeft = 60;
-
+var score = 0
 
 
 function generateQuizQuestions(){
@@ -60,19 +60,19 @@ function checkAnswer(answer){
         //display in the results div that the answer is correct.
     }else if (answer !== correct && currentQuestionIndex !== finalQuestionIndex){
         alert("That Is Incorrect.")
-        currentQuestionIndex++;
-        
+         generateQuizQuestions();
         //display in the results div that the answer is wrong.
     }else{
-        showScore();
+        // showScore();
     }
-
+    console.log(answer)
 }
     // function to start the quiz
 function startGame (){
     startButton.style.display = "none";
     // questionElement.style.display = "none";
     generateQuizQuestions ()
+    checkAnswer
     // timer
     // timerInterval = setInterval(function() {
     //     timeLeft--;
@@ -85,5 +85,4 @@ function startGame (){
     //   }, 1000);
 
 }
-
 startButton.addEventListener("click", startGame);
