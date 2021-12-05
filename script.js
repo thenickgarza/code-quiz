@@ -22,12 +22,12 @@ var quizQuestions = [{
         choiceD: "5",
         correctAnswer: "1"},
     {
-        question: "How many elements can you apply to a 'ID' attribute to?",
-        choiceA: "3",
-        choiceB: "1",
-        choiceC: "As many as you want",
-        choiceD: "5",
-        correctAnswer: "1"},   
+        question: "What term can JavaScript be associated with?",
+        choiceA: "bones",
+        choiceB: "behavior",
+        choiceC: "all the above",
+        choiceD: "style",
+        correctAnswer: "behavior"},   
     ];
 
 var finalQuestionIndex = quizQuestions.length
@@ -50,6 +50,7 @@ function generateQuizQuestions(){
     buttonD.onclick = checkAnswer
 }
 function checkAnswer(answer){
+    answer = answer.target.innerText;
     correct = quizQuestions[currentQuestionIndex].correctAnswer;
 
     if (answer === correct && currentQuestionIndex !== finalQuestionIndex){
@@ -65,24 +66,24 @@ function checkAnswer(answer){
     }else{
         // showScore();
     }
-    console.log(answer)
+    console.log(correct);
 }
     // function to start the quiz
 function startGame (){
     startButton.style.display = "none";
     // questionElement.style.display = "none";
     generateQuizQuestions ()
-    checkAnswer
+    checkAnswer ()
     // timer
-    // timerInterval = setInterval(function() {
-    //     timeLeft--;
-    //     quizTimer.innerText = "Time left: " + timeLeft;
+    timerInterval = setInterval(function() {
+        timeLeft--;
+        quizTimer.document.innerText = "Time left:" + timeLeft;
     
-    //     if(timeLeft === 0) {
-    //       clearInterval(timerInterval);
-    //       showScore();
-    //     }
-    //   }, 1000);
+        if(timeLeft === 0) {
+          clearInterval(timerInterval);
+          showScore();
+        }
+      }, 1000);
 
 }
 startButton.addEventListener("click", startGame);
