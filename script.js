@@ -7,10 +7,11 @@ var buttonA = document.querySelector(".btn-a");
 var buttonB = document.querySelector(".btn-b");
 var buttonC = document.querySelector(".btn-c");
 var buttonD = document.querySelector(".btn-d");
-
+var container = document.querySelector(".container");
 
 // Quiz questions object
 var quizQuestions = [{
+        
         question: "How many elements can you apply to a 'ID' attribute to?",
         choiceA: "3",
         choiceB: "1",
@@ -25,12 +26,12 @@ var quizQuestions = [{
         choiceD: "style",
         correctAnswer: "behavior"},
     {   
-        question: "The is a placeholdet question",
-        choiceA: "A",
-        choiceB: "B",
-        choiceC: "C",
-        choiceD: "D",
-        correctAnswer: "A"},
+        question: "How many elements can you apply to a 'class' attribute to?",
+        choiceA: "1",
+        choiceB: "2",
+        choiceC: "As many as you like",
+        choiceD: "none",
+        correctAnswer: "As many as you like"},
 
 
       
@@ -63,8 +64,8 @@ function checkAnswer(answer){
     if (answer === correct && currentQuestionIndex !== finalQuestionIndex){
         score++;
         alert("That Is Correct!");
-        currentQuestionIndex++;
-        generateQuizQuestions();
+        currentQuestionIndex++
+        generateQuizQuestions ();
         //display in the results div that the answer is correct.
     }else if (answer !== correct && currentQuestionIndex !== finalQuestionIndex){
         alert("That Is Incorrect.")
@@ -72,10 +73,10 @@ function checkAnswer(answer){
          generateQuizQuestions();
         //display in the results div that the answer is wrong.
     }else{
-        // showScore();
+        endGame();
     }
-    console.log(currentQuestionIndex);
 }
+
     // function to start the quiz
 function startGame (){
     startButton.style.display = "none";
@@ -88,9 +89,15 @@ function startGame (){
     
         if(timeLeft === 0) {
           clearInterval(timerInterval);
-          showScore();
+          endGame()
         }
       }, 1000);
 
 }
+
+function endGame () {
+        buttonA.style.display = "none";
+};
+
+
 startButton.addEventListener("click", startGame);
