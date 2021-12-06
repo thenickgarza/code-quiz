@@ -7,7 +7,10 @@ var buttonA = document.querySelector(".btn-a");
 var buttonB = document.querySelector(".btn-b");
 var buttonC = document.querySelector(".btn-c");
 var buttonD = document.querySelector(".btn-d");
-var container = document.querySelector(".container");
+var containerEL = document.querySelector(".container");
+var container = document.querySelector("#question-box");
+var highscorePage = document.querySelector("#highscore-header")
+highscorePage.style.display = "none";
 
 // Quiz questions object
 var quizQuestions = [{
@@ -72,14 +75,14 @@ function checkAnswer(answer){
         timeLeft = timeLeft - 10;
          generateQuizQuestions();
         //display in the results div that the answer is wrong.
-    }else{
-        endGame();
+    
     }
 }
 
     // function to start the quiz
 function startGame (){
     startButton.style.display = "none";
+    highscorePage.style.display = "none";
     // questionElement.style.display = "none";
     generateQuizQuestions ()
     // timer
@@ -89,6 +92,7 @@ function startGame (){
     
         if(timeLeft === 0) {
           clearInterval(timerInterval);
+          alert("You have ran out of time!");
           endGame()
         }
       }, 1000);
@@ -96,7 +100,11 @@ function startGame (){
 }
 
 function endGame () {
-        buttonA.style.display = "none";
+        container.style.display = "none";
+        highscorePage.style.display = "block"
+        buttonGrid.style.display = "none";
+        containerEL.style.display = "none";
+
 };
 
 
