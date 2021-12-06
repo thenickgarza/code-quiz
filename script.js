@@ -40,7 +40,7 @@ var quizQuestions = [{
       
     ];
 
-var finalQuestionIndex = quizQuestions.length
+var finalQuestionIndex = quizQuestions.length -1
 var currentQuestionIndex = 0
 var timerInterval;
 var timeLeft = 60;
@@ -67,18 +67,21 @@ function checkAnswer(answer){
     if (answer === correct && currentQuestionIndex !== finalQuestionIndex){
         score++;
         alert("That Is Correct!");
-        currentQuestionIndex++
         generateQuizQuestions ();
         //display in the results div that the answer is correct.
     }else if (answer !== correct && currentQuestionIndex !== finalQuestionIndex){
         alert("That Is Incorrect.")
         timeLeft = timeLeft - 10;
          generateQuizQuestions();
+    }
         //display in the results div that the answer is wrong.
-    
-    } else if (currentQuestionIndex === finalQuestionIndex)
+  if (currentQuestionIndex === finalQuestionIndex){
         alert("You Have Completed All The Questions, Click Ok To See How You Did!")
         endGame ()
+    } else {
+      currentQuestionIndex++
+      generateQuizQuestions();
+    }
 }
 
     // function to start the quiz
