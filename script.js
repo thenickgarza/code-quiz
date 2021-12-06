@@ -68,12 +68,13 @@ function checkAnswer(answer){
         //display in the results div that the answer is correct.
     }else if (answer !== correct && currentQuestionIndex !== finalQuestionIndex){
         alert("That Is Incorrect.")
+        timeLeft = timeLeft - 10;
          generateQuizQuestions();
         //display in the results div that the answer is wrong.
     }else{
         // showScore();
     }
-    console.log(correct);
+    console.log(currentQuestionIndex);
 }
     // function to start the quiz
 function startGame (){
