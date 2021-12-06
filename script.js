@@ -76,7 +76,9 @@ function checkAnswer(answer){
          generateQuizQuestions();
         //display in the results div that the answer is wrong.
     
-    }
+    } else if (currentQuestionIndex === finalQuestionIndex)
+        alert("You Have Completed All The Questions, Click Ok To See How You Did!")
+        endGame ()
 }
 
     // function to start the quiz
