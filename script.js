@@ -51,7 +51,7 @@ var timeLeft = 60;
 var score = 0
 var correct;
 
-
+// Generates the quiz questions and puts the buttons on a on click to the check answer function
 function generateQuizQuestions(){
     var currentQuestion = quizQuestions[currentQuestionIndex];
     questionElement.innerHTML = currentQuestion.question;
@@ -64,11 +64,11 @@ function generateQuizQuestions(){
     buttonD.innerHTML = currentQuestion.choiceD;
     buttonD.onclick = checkAnswer
 }
-
+// function to check the answer.
 function checkAnswer(answer){
     answer = answer.target.innerText;
     correct = quizQuestions[currentQuestionIndex].correctAnswer;
-
+    // if answer is correct add 5 to the score and call the generateQuizQuestion function 
     if (answer === correct && currentQuestionIndex !== finalQuestionIndex){
         score = score + 5;
         alert("That Is Correct!");
@@ -109,7 +109,17 @@ function startGame (){
       }, 1000);
 
 }
-
+// function to save the scores to local storage
+function saveScores() {
+    sumbitBtn.addEventListener('click', function() {
+        localStorage.setItem('score', score);
+        localStorage.setItem('name', userInitials.value)
+        sumbitBtn.style.display = "none";
+        userInitials.style.display= "none";
+        console.log(localStorage)
+    });
+}
+// function to end the game and display the highscore inout etc
 function endGame () {
         container.style.display = "none";
         highscorePage.style.display = "block"
@@ -118,14 +128,16 @@ function endGame () {
         buttonGrid.style.display = "none";
         containerEL.style.display = "none";
         alert(" Congrats! Your score is " + score);
-         sumbitBtn.addEventListener('click', function() {
-                localStorage.setItem('score', score);
-                localStorage.setItem('name', userInitials.value.trim())
-         })
+        //  sumbitBtn.addEventListener('click', function() {
+        //         localStorage.setItem('score', score);
+        //         localStorage.setItem('name', userInitials.value)
+        //         sumbitBtn.style.display = "none";
+        //         userInitials.style.display= "none";
+        //         console.log(localStorage)
+        //     });
+// };
+
+        saveScores();
 };
-
-
-
-
-
+// starts the game on a click of the start button
 startButton.addEventListener("click", startGame);
