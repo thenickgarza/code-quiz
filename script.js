@@ -65,7 +65,7 @@ function checkAnswer(answer){
     correct = quizQuestions[currentQuestionIndex].correctAnswer;
 
     if (answer === correct && currentQuestionIndex !== finalQuestionIndex){
-        score++;
+        score = score + 5;
         alert("That Is Correct!");
         generateQuizQuestions ();
         //display in the results div that the answer is correct.
@@ -110,8 +110,7 @@ function endGame () {
         highscorePage.style.display = "block"
         buttonGrid.style.display = "none";
         containerEL.style.display = "none";
-        
-
+        alert(" Congrats! Your score is " + score);
 };
 
 
