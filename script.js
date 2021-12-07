@@ -77,6 +77,7 @@ function checkAnswer(answer){
         //display in the results div that the answer is wrong.
   if (currentQuestionIndex === finalQuestionIndex){
         alert("You Have Completed All The Questions, Click Ok To See How You Did!")
+        clearInterval(timerInterval);
         endGame ()
     } else {
       currentQuestionIndex++
@@ -109,6 +110,7 @@ function endGame () {
         highscorePage.style.display = "block"
         buttonGrid.style.display = "none";
         containerEL.style.display = "none";
+        
 
 };
 
