@@ -1,6 +1,8 @@
 // Getting HTML elements 
 var startButton = document.querySelector(".start-btn");
 var questionElement = document.querySelector(".questions");
+var userInitials = document.querySelector("#initials");
+var sumbitBtn = document.querySelector("#submitScore")
 var buttonGrid = document.querySelector(".btn-grid");
 var quizTimer = document.querySelector("#timer");
 var buttonA = document.querySelector(".btn-a");
@@ -11,6 +13,8 @@ var containerEL = document.querySelector(".container");
 var container = document.querySelector("#question-box");
 var highscorePage = document.querySelector("#highscore-header")
 highscorePage.style.display = "none";
+userInitials.style.display = "none";
+sumbitBtn.style.display = "none";
 
 // Quiz questions object
 var quizQuestions = [{
@@ -60,6 +64,7 @@ function generateQuizQuestions(){
     buttonD.innerHTML = currentQuestion.choiceD;
     buttonD.onclick = checkAnswer
 }
+
 function checkAnswer(answer){
     answer = answer.target.innerText;
     correct = quizQuestions[currentQuestionIndex].correctAnswer;
@@ -108,10 +113,16 @@ function startGame (){
 function endGame () {
         container.style.display = "none";
         highscorePage.style.display = "block"
+        userInitials.style.display = "block"
+        sumbitBtn.style.display = "block"
         buttonGrid.style.display = "none";
         containerEL.style.display = "none";
         alert(" Congrats! Your score is " + score);
+         
 };
+
+
+
 
 
 startButton.addEventListener("click", startGame);
