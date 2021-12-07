@@ -118,7 +118,10 @@ function endGame () {
         buttonGrid.style.display = "none";
         containerEL.style.display = "none";
         alert(" Congrats! Your score is " + score);
-         
+         sumbitBtn.addEventListener('click', function() {
+                localStorage.setItem('score', score);
+                localStorage.setItem('name', userInitials.value.trim())
+         })
 };
 
 
