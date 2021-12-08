@@ -17,6 +17,8 @@ highscorePage.style.display = "none";
 userInitials.style.display = "none";
 sumbitBtn.style.display = "none";
 
+let userInput = [];
+
 // Quiz questions object
 var quizQuestions = [{
         
@@ -113,18 +115,25 @@ function startGame (){
 // function to save the scores to local storage
 function saveScores() {
     sumbitBtn.addEventListener('click', function() {
-        localStorage.setItem('score', score);
-        localStorage.setItem('name', userInitials.value)
+        // scoresArr = scoresArr.push(score);
+        // namesArr = namesArr.push(name);
+        // localStorage.setItem('score', score);
+        // localStorage.setItem('name', userInitials.value)
         sumbitBtn.style.display = "none";
         userInitials.style.display= "none";
         console.log(localStorage)
     });
-}
+};
+saveScores();
+
 function showScores () {
-    var highscoreInput = document.querySelector("#highscore-initials");
-    highscoreInput.innerHTML = score
-    console.log(highscoreInput)
-    console.log(score)
+    const input = {
+        score: score,
+        name: document.getElementById('initials').value
+    }
+    userInput.push(input);
+    localStorage.setItem('savedScores', JSON.stringify(input));
+    console.log(userInput)
 };
 
 // function to end the game and display the highscore inout etc
@@ -136,15 +145,6 @@ function endGame () {
         buttonGrid.style.display = "none";
         containerEL.style.display = "none";
         alert(" Congrats! Your score is " + score);
-        //  sumbitBtn.addEventListener('click', function() {
-        //         localStorage.setItem('score', score);
-        //         localStorage.setItem('name', userInitials.value)
-        //         sumbitBtn.style.display = "none";
-        //         userInitials.style.display= "none";
-        //         console.log(localStorage)
-        //     });
-// };
-
         saveScores();
         showScores();
 };
