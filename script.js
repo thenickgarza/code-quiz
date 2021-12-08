@@ -2,6 +2,7 @@
 var startButton = document.querySelector(".start-btn");
 var questionElement = document.querySelector(".questions");
 var userInitials = document.querySelector("#initials");
+var userHighScore = document.querySelector("#highscore-score")
 var sumbitBtn = document.querySelector("#submitScore")
 var buttonGrid = document.querySelector(".btn-grid");
 var quizTimer = document.querySelector("#timer");
@@ -43,7 +44,7 @@ var quizQuestions = [{
 
       
     ];
-
+// Other variables in 
 var finalQuestionIndex = quizQuestions.length -1
 var currentQuestionIndex = 0
 var timerInterval;
@@ -119,6 +120,13 @@ function saveScores() {
         console.log(localStorage)
     });
 }
+function showScores () {
+    var highscoreInput = document.querySelector("#highscore-initials");
+    highscoreInput.innerHTML = score
+    console.log(highscoreInput)
+    console.log(score)
+};
+
 // function to end the game and display the highscore inout etc
 function endGame () {
         container.style.display = "none";
@@ -138,6 +146,7 @@ function endGame () {
 // };
 
         saveScores();
+        showScores();
 };
 // starts the game on a click of the start button
 startButton.addEventListener("click", startGame);
