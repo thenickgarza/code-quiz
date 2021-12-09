@@ -17,7 +17,6 @@ highscorePage.style.display = "none";
 userInitials.style.display = "none";
 sumbitBtn.style.display = "none";
 
-let userInput = [];
 
 // Quiz questions object
 var quizQuestions = [{
@@ -113,28 +112,41 @@ function startGame (){
 
 }
 // function to save the scores to local storage
-function saveScores() {
-    sumbitBtn.addEventListener('click', function() {
-        // scoresArr = scoresArr.push(score);
-        // namesArr = namesArr.push(name);
-        // localStorage.setItem('score', score);
-        // localStorage.setItem('name', userInitials.value)
-        sumbitBtn.style.display = "none";
-        userInitials.style.display= "none";
-        console.log(localStorage)
-    });
-};
-saveScores();
+// function showScores() {
+//     sumbitBtn.addEventListener('click', function() {
+//         // scoresArr = scoresArr.push(score);
+//         // namesArr = namesArr.push(name);
+//         // localStorage.setItem('score', score);
+//         localStorage.setItem('name', userInitials.value)
+//         sumbitBtn.style.display = "none";
+//         userInitials.style.display= "none";
+//         console.log(localStorage)
+//     });
+// };
 
-function showScores () {
-    const input = {
+// function hideInput () {
+//     sumbitBtn.addEventListener('click', function() { 
+//     sumbitBtn.style.display = "none";
+//      userInitials.style.display= "none";
+// });
+// }
+var userName = document.querySelector("#initials").value
+
+function saveScores () {
+    sumbitBtn.addEventListener('click', function() {
+     var savedScores = JSON.parse(window.localStorage.getItem("savedScores")) || [];
+    const newUserScore = {
         score: score,
-        name: document.getElementById('initials').value
-    }
-    userInput.push(input);
-    localStorage.setItem('savedScores', JSON.stringify(input));
-    console.log(userInput)
-};
+        name: userName
+        };
+    savedScores.push(newUserScore);
+    localStorage.setItem('savedScores', JSON.stringify(savedScores,));
+    console.log(userInitials); 
+    sumbitBtn.style.display = "none";
+        userInitials.style.display= "none";
+   
+});
+}
 
 // function to end the game and display the highscore inout etc
 function endGame () {
@@ -145,8 +157,9 @@ function endGame () {
         buttonGrid.style.display = "none";
         containerEL.style.display = "none";
         alert(" Congrats! Your score is " + score);
-        saveScores();
-        showScores();
+        // saveScores();
+        saveScores()
+        // showScores()
 };
 // starts the game on a click of the start button
 startButton.addEventListener("click", startGame);
