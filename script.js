@@ -98,54 +98,41 @@ function startGame (){
     highscorePage.style.display = "none";
     // questionElement.style.display = "none";
     generateQuizQuestions ()
-    // timer
+    // logic to start the Timer
     timerInterval = setInterval(function() {
-        timeLeft--;
-        quizTimer.innerText = "Time left:" + timeLeft;
+    timeLeft--;
+    quizTimer.innerText = "Time left:" + timeLeft;
     
-        if(timeLeft === 0) {
-          clearInterval(timerInterval);
-          alert("You have ran out of time!");
-          endGame()
+    if(timeLeft === 0) {
+        clearInterval(timerInterval);
+         alert("You have ran out of time!");
+        endGame()
         }
       }, 1000);
 
 }
-// function to save the scores to local storage
-// function showScores() {
-//     sumbitBtn.addEventListener('click', function() {
-//         // scoresArr = scoresArr.push(score);
-//         // namesArr = namesArr.push(name);
-//         // localStorage.setItem('score', score);
-//         localStorage.setItem('name', userInitials.value)
-//         sumbitBtn.style.display = "none";
-//         userInitials.style.display= "none";
-//         console.log(localStorage)
-//     });
-// };
 
-// function hideInput () {
-//     sumbitBtn.addEventListener('click', function() { 
-//     sumbitBtn.style.display = "none";
-//      userInitials.style.display= "none";
-// });
-// }
-var userName = document.querySelector("#initials").value
-
-function saveScores () {
+    // function to sace the scores to local storage
+    function saveScores () {
+    // adds a event listener to the click of the submit button.
     sumbitBtn.addEventListener('click', function() {
-     var savedScores = JSON.parse(window.localStorage.getItem("savedScores")) || [];
+    // defined var = userName to the value of the text input
+    var userName = document.querySelector("#initials").value
+    // Using JSON parse to getITtem of the "savedScored" or || creates a empty array
+    var savedScores = JSON.parse(window.localStorage.getItem("savedScores")) || [];
+    // defines newUserScore as score being the literal score of the count being taken
     const newUserScore = {
         score: score,
         name: userName
         };
+    // pushes the created array to the savedScores
     savedScores.push(newUserScore);
+    // stringigy the array
     localStorage.setItem('savedScores', JSON.stringify(savedScores,));
     console.log(userInitials); 
     sumbitBtn.style.display = "none";
-        userInitials.style.display= "none";
-   
-});
+    userInitials.style.display= "none";
+   });
 }
 
 // function to end the game and display the highscore inout etc
@@ -157,9 +144,7 @@ function endGame () {
         buttonGrid.style.display = "none";
         containerEL.style.display = "none";
         alert(" Congrats! Your score is " + score);
-        // saveScores();
         saveScores()
-        // showScores()
-};
+    };
 // starts the game on a click of the start button
 startButton.addEventListener("click", startGame);
